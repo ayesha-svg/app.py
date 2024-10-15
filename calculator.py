@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyOnr6+aGcjXaX2zRrKi6cK1",
+      "authorship_tag": "ABX9TyMnpo5tHrWwdAWOfzEUtdR6",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -33,49 +33,72 @@
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
-        "id": "JTkIpohz2zpH",
-        "outputId": "22b93ff2-3f1c-4ab7-f109-1a1d642ef4d7"
+        "id": "B-qGwVpUBxKC",
+        "outputId": "0dca177b-66a0-401e-be03-c0588f7c4aff"
       },
       "outputs": [
         {
           "output_type": "stream",
           "name": "stdout",
           "text": [
-            "Writing app.py\n"
+            "Enter a mathematical expression (use math functions like sqrt, sin, cos, etc.): 1\n",
+            "Result: 1\n"
           ]
         }
       ],
       "source": [
-        "%%writefile app.py\n",
-        "\n",
-        "import streamlit as st\n",
+        "# Importing necessary libraries\n",
         "import math\n",
         "\n",
-        "st.title(\"Scientific Calculator\")\n",
+        "def calculate(expression):\n",
+        "    try:\n",
+        "        # Evaluating the expression\n",
+        "        result = eval(expression, {\"__builtins__\": None}, math.__dict__)\n",
+        "        return result\n",
+        "    except Exception as e:\n",
+        "        return str(e)\n",
         "\n",
-        "# Function to perform calculations\n",
-        "def calculate(operation, value1, value2):\n",
-        "    if operation == 'Addition':\n",
-        "        return value1 + value2\n",
-        "    elif operation == 'Subtraction':\n",
-        "        return value1 - value2\n",
-        "    elif operation == 'Multiplication':\n",
-        "        return value1 * value2\n",
-        "    elif operation == 'Division':\n",
-        "        return value1 / value2\n",
-        "    elif operation == 'Square Root':\n",
-        "        return math.sqrt(value1)\n",
-        "    elif operation == 'Power':\n",
-        "        return math.pow(value1, value2)\n",
+        "# Taking user input\n",
+        "expression = input(\"Enter a mathematical expression (use math functions like sqrt, sin, cos, etc.): \")\n",
+        "result = calculate(expression)\n",
+        "print(\"Result:\", result)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
         "\n",
-        "# User inputs\n",
-        "operation = st.selectbox(\"Select Operation\", ['Addition', 'Subtraction', 'Multiplication', 'Division', 'Square Root', 'Power'])\n",
-        "value1 = st.number_input(\"Enter first number\", value=0)\n",
-        "value2 = st.number_input(\"Enter second number (for square root, enter first number only)\", value=0)\n",
         "\n",
-        "if st.button(\"Calculate\"):\n",
-        "    result = calculate(operation, value1, value2)\n",
-        "    st.write(\"Result: \", result)\n"
+        "def calculate(expression):\n",
+        "    try:\n",
+        "        # Evaluating the expression\n",
+        "        result = eval(expression, {\"__builtins__\": None}, math.__dict__)\n",
+        "        return result\n",
+        "    except Exception as e:\n",
+        "        return str(e)\n",
+        "\n",
+        "# Taking user input\n",
+        "expression = input(\"Enter a mathematical expression (use math functions like sqrt, sin, cos, etc.): \")\n",
+        "result = calculate(expression)\n",
+        "print(\"Result:\", result)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "W4nyMKbXCh0P",
+        "outputId": "2153d2f3-2e01-449f-ed44-71728ce3b6e5"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a mathematical expression (use math functions like sqrt, sin, cos, etc.): sqrt(25)\n",
+            "Result: 5.0\n"
+          ]
+        }
       ]
     }
   ]
